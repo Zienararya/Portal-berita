@@ -3,6 +3,8 @@
 <head>
     <title>Input Berita Terbaru</title>
     <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
 
 </head>
 <body>
@@ -37,12 +39,14 @@
         $judul=input($_POST["Judul"]);
         $deskripsi=input($_POST["Deskripsi"]);
         $kategori=input($_POST["Kategori"]);
+        $foto=input($_POST["Foto"]);
 
         //Query update data pada tabel anggota
         $sql="update berita set
 			Judul='$judul',
 			Deskripsi='$deskripsi',
-			Kategori='$kategori'
+			Kategori='$kategori',
+			Foto='$foto'
 			where Nomor=$nomor";
 
         //Mengeksekusi atau menjalankan query diatas
@@ -60,27 +64,41 @@
     }
 
     ?>
-    <h2><center>Update Berita</center></h2>
+    <h1 class="mb-3">Update Berita</h1>
 
 
     <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="post">
-        <div class="form-group">
+        <div class="form-group mb-2">
             <label>Judul:</label>
-            <input type="text" name="Judul" class="form-control" placeholder="Masukan Judul Berita" required />
+            <input type="text" name="Judul" class="form-control" placeholder="Masukan Judul Berita" value="<?php echo $data['Judul']; ?>" required />
 
         </div>
-        <div class="form-group">
+        <div class="form-group mb-2">
             <label>Deskripsi:</label>
-            <input type="text" name="Deskripsi" class="form-control" placeholder="Masukan Deskripsi Berita" required/>
+            <input type="text" name="Deskripsi" class="form-control" placeholder="Masukan Deskripsi Berita" value="<?php echo $data['Deskripsi']; ?>" required/>
         </div>
-        <div class="form-group">
+        <div class="form-group ">
             <label>Kategori :</label>
-            <input type="text" name="Kategori" class="form-control" placeholder="Masukan Kategori berita" required/>
-
+            <input type="text" name="Kategori" class="form-control" placeholder="Masukan Kategori berita" value="<?php echo $data['Kategori']; ?>" required/>
+        <div class="form-group ">
+            <label>Foto Kegiatan :</label>
+            <input type="text" name="Foto" class="form-control" placeholder="Masukan Foto Kegiatan" value="<?php echo $data['Foto']; ?>" required/>
+            
         <input type="hidden" name="Nomor" value="<?php echo $data['Nomor']; ?>" />
-
-        <center><button type="submit" name="submit" class="btn btn-primary">Submit</button></center>
+        <button type="submit" name="submit" class="btn btn-primary mt-2">Submit</button>
     </form>
 </div>
+
+<div class="my-5">
+  <footer class="text-center text-lg-start text-white bg-primary fixed-bottom">
+    <div class="text-center p-3">
+      © 2023 Created by:
+      <a class="text-white" href="https://mdbootstrap.com/">Kenzie Nararya</a>
+    </div>
+  </footer>
+  <!-- Footer -->
+
+</div>
+
 </body>
 </html>

@@ -3,6 +3,8 @@
 <head>
     <title>Input Berita Terbaru</title>
     <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
 </head>
 <body>
 <div class="container">
@@ -23,10 +25,11 @@
         $judul=input($_POST["Judul"]);
         $deskripsi=input($_POST["Deskripsi"]);
         $kategori=input($_POST["Kategori"]);
+        $foto=input($_POST["Foto"]);
 
         //Query input menginput data kedalam tabel anggota
-        $sql="insert into berita (Judul,Deskripsi,Kategori) values
-		('$judul','$deskripsi','$kategori')";
+        $sql="insert into berita (Judul,Deskripsi,Kategori,Foto) values
+		('$judul','$deskripsi','$kategori','$foto')";
 
         //Mengeksekusi/menjalankan query diatas
         $hasil=mysqli_query($kon,$sql);
@@ -42,25 +45,40 @@
 
     }
     ?>
-    <h2><center>Input Berita</center></h2>
+    <h1 class="mb-3">Input Berita</h1>
 
 
-    <form action="<?php echo $_SERVER["PHP_SELF"];?>" method="post">
-        <div class="form-group">
+    <form action="<?php echo $_SERVER["PHP_SELF"];?>" method="post" enctype="multpart/form-data">
+        <div class="form-group mb-2">
             <label>Judul:</label>
             <input type="text" name="Judul" class="form-control" placeholder="Masukan Judul Berita" required />
-
         </div>
-        <div class="form-group">
+        <div class="form-group mb-2">
             <label>Deskripsi:</label>
-            <input type="text" name="Deskripsi" class="form-control" placeholder="Masukan Deskripsi Berita" required/>
+            <input type="text" name="Deskripsi" class="form-control"  placeholder="Masukan Deskripsi Berita" required/>
         </div>
-       <div class="form-group">
+       <div class="form-group mb-2">
             <label>Kategori :</label>
             <input type="text" name="Kategori" class="form-control" placeholder="Masukan Kategori Berita" required/>
         </div>
-        <center><button type="submit" name="submit" class="btn">Submit</button></center>
+                <div class="form-group mb-2">
+            <label>Foto Kegiatan:</label>
+            <input type="text" name="Foto" class="form-control" placeholder="Masukan Foto Kegiatan" required />
+        </div>
+        <button type="submit" name="submit" class="btn btn-primary">Submit</button>
     </form>
 </div>
+
+<div class="my-5">
+  <footer class="text-center text-lg-start text-white bg-primary fixed-bottom">
+    <div class="text-center p-3">
+      © 2023 Created by:
+      <a class="text-white" href="https://mdbootstrap.com/">Kenzie Nararya</a>
+    </div>
+  </footer>
+  <!-- Footer -->
+
+</div>
+
 </body>
 </html>
