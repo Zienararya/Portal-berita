@@ -36,7 +36,7 @@
 
         //Kondisi apakah berhasil atau tidak dalam mengeksekusi query diatas
         if ($hasil) {
-            header("Location:index.php");
+            header("Location:portal.php");
         }
         else {
             echo "<div class='alert alert-danger'> Data Gagal disimpan.</div>";
